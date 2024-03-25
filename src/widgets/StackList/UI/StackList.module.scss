@@ -1,0 +1,21 @@
+.list{
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 1440px;
+    justify-content: flex-start;
+
+    .list_box{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: flex-start;
+        max-width: 440px;
+        padding: 30px;
+        border-radius: 58px;
+        background: #ffffff;
+        box-shadow:  22px 22px 49px #b5b5b5,
+                    -22px -22px 49px #ffffff;  
+    }
+}

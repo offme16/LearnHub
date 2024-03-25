@@ -6,7 +6,7 @@ export interface TasksSchema {
 
 export interface Task{
     "courseId": number,
-    "courceName": string,
+    "title": string,
     "description": string,
     "task": string,
 }
