@@ -1,12 +1,12 @@
-.list{
+.list {
     margin: auto;
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
     max-width: 1440px;
-    justify-content: flex-start;
+    justify-content: center;
 
-    .list_box{
+    .list_box {
         display: flex;
         flex-direction: column;
         justify-content: space-around;
@@ -17,5 +17,10 @@
         background: #ffffff;
         box-shadow:  22px 22px 49px #b5b5b5,
                     -22px -22px 49px #ffffff;  
+    }
+    
+    .list_box__links {
+        padding: 5px;
+        margin-bottom: 10px;
     }
 }

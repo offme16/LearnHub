@@ -18,7 +18,7 @@ const Header = () => {
                 <NavLink to={'/'}><h1>LEARNHUB</h1></NavLink>
             </div>
             <div className={cls.header_navigate}>
-                <NavLink to={'/'} className={cls.header_navigate__item}>ТЕСТИРОВАНИЕ</NavLink>
+                <NavLink to={'/tasks/606'} className={cls.header_navigate__item}>ТЕСТИРОВАНИЕ</NavLink>
                 <NavLink to={'/'} className={cls.header_navigate__item}>ЧАТ-БОТ</NavLink>
                 <NavLink to={'/'} className={cls.header_navigate__item}>ВАКАНСИИ</NavLink>
             </div>
