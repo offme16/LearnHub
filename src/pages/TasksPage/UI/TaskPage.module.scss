@@ -1,0 +1,18 @@
+.container {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    height: 50vh;
+    .container_description {
+        background-color: aqua;
+        padding: 40px;
+    }
+    .container_form {
+        background-color: antiquewhite;
+        padding: 40px;
+    }
+    .container_form__input {
+        border: 1px solid black;
+        padding: 5px 10px;
+        
+    }
+}
