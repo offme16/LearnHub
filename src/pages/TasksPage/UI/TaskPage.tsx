@@ -8,7 +8,6 @@ const TaskPage = () => {
     const mas = [1, 2, 3, 4]; 
     return (
         <div>
-            <Header />
               {mas.map(e => <div className={cls.container}>
                 <div className={cls.container_description}>
                     <h2>QUESTION</h2>

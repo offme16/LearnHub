@@ -4,6 +4,7 @@ import { TaskReducer } from 'entities/Tasks';
 import { StackReducer } from 'entities/Stack';
 import { AuthReducer } from 'entities/Authorization';
 import { RegistReducer } from 'entities/Registration';
+import { ProfileReducer } from 'entities/Profile';
 
 export function createRootStore(initialState?: StateSchema) {
     const rootReducer: ReducersMapObject<StateSchema> = {
@@ -11,6 +12,7 @@ export function createRootStore(initialState?: StateSchema) {
          stack: StackReducer,
          auth: AuthReducer,
          regist: RegistReducer,
+         profile: ProfileReducer,
     };
 
     return configureStore<StateSchema>({
