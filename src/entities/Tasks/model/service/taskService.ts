@@ -12,7 +12,7 @@ export const tasksService = createAsyncThunk(
     'get_tasks',
     async (_,thunkAPI) => {
         try {
-            const response = await $api.get('');
+            const response = await $api.get(`tasks`);
 
             if (!response.data) {
                 throw new Error();

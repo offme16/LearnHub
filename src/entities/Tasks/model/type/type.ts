@@ -5,8 +5,13 @@ export interface TasksSchema {
 }
 
 export interface Task{
-    "courseId": number,
-    "title": string,
+    "id": number,
     "description": string,
-    "task": string,
+    "answers"?: Answer[],
+}
+
+export interface Answer {
+    "id": number,
+    "status": number,
+    "answer": string
 }

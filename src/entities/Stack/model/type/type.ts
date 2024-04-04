@@ -9,18 +9,6 @@ export interface Stacks {
     "title": string,
     "description": string,
     "links"?: Links[],
-    "tasks"?: Tasks[],
-}
-export interface Tasks {
-    "answers"?: Answer[],
-    "description": string,
-    "id": number
-}
-
-export interface Answer {
-    "id": number,
-    "status": boolean,
-    "answer": string
 }
 
 export interface Links {

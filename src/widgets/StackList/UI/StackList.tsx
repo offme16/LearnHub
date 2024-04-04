@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { getData } from 'entities/Stack';
 import { useEffect } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
-import { stackService } from 'entities/Stack/model/service/stackService';
+import { stackService } from 'entities/Stack';
 import Loader from 'shared/UI/Loader/Loader';
 import { useNavigate } from 'react-router-dom';
 const StackList = () => {
@@ -17,8 +17,7 @@ const StackList = () => {
     },[dispatch])
 
     const getID = (id: number) => {
-        navigate(`/tasks/${id}`)
-        return console.log(id)
+        navigate(`/tasks/${id}`);
     }
     return (
         <div className={cls.list}>
