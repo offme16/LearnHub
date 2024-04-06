@@ -11,7 +11,7 @@ export interface Task{
 }
 
 export interface Answer {
-    "id": number,
+    "id": string,
     "status": number,
     "answer": string
 }

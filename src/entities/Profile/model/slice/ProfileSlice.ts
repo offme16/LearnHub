@@ -6,13 +6,21 @@ import { getValue } from '../service/getValue';
 const initialState: ProfileSchema = {
     error: undefined,
     isLoading: false,
-    data: undefined,
+    score: {},
+    date: "",
 };
 
 export const ProfileSlice = createSlice({
-    name: 'registration',
+    name: 'profile',
     initialState,
-    reducers: { },
+    reducers: {
+        setScore: (state, action: PayloadAction<{ [key: string]: number }>) => {
+            state.score = action.payload;
+          },
+        setDate: (state, action: PayloadAction<string>) => {
+            state.date = action.payload;
+          },
+     },
     extraReducers: (builder) => {
         builder
             .addCase(getValue.pending, (state) => {
@@ -21,7 +29,8 @@ export const ProfileSlice = createSlice({
             })
             .addCase(getValue.fulfilled, (state, action) => {
                 state.isLoading = false;
-                state.data = action.payload;
+                state.date = action.payload;
+                state.score = action.payload;
             })
             .addCase(getValue.rejected, (state, action) => {
                 state.isLoading = false;
