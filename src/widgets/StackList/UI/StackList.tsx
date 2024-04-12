@@ -7,6 +7,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { stackService } from 'entities/Stack';
 import Loader from 'shared/UI/Loader/Loader';
 import { useNavigate } from 'react-router-dom';
+
 const StackList = () => {
     const navigate = useNavigate()
     const dispatch = useAppDispatch();

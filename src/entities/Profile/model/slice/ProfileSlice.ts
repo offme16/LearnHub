@@ -6,7 +6,7 @@ import { getValue } from '../service/getValue';
 const initialState: ProfileSchema = {
     error: undefined,
     isLoading: false,
-    score: {},
+    score: 0,
     date: "",
 };
 
@@ -14,7 +14,7 @@ export const ProfileSlice = createSlice({
     name: 'profile',
     initialState,
     reducers: {
-        setScore: (state, action: PayloadAction<{ [key: string]: number }>) => {
+        setScore: (state, action) => {
             state.score = action.payload;
           },
         setDate: (state, action: PayloadAction<string>) => {

@@ -1,6 +1,6 @@
 export interface ProfileSchema {
     isLoading: boolean,
     error?: string,
-    score: { [key: string]: number };
+    score: number;
     date: string,
 }

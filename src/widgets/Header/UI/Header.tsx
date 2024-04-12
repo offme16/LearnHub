@@ -4,15 +4,23 @@ import arrow from '../../../shared/assets/down_arrow.svg';
 import prof_icon from '../../../shared/assets/proficon.svg';
 import { NavLink, Navigate, useNavigate } from 'react-router-dom';
 import Button from 'shared/UI/Button/Button';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import { useOutsideClick } from 'shared/lib/hooks/useOutsideClick';
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
     const id = 1;
+
     const toggleOpen = () => {
         setIsOpen(!isOpen)
     }
+    const btnRef = useRef<HTMLDivElement>(null);
+
+    const selectRef = useOutsideClick<HTMLDivElement>(() => {
+        setIsOpen(false)
+    },[btnRef?.current])
+
     return (
         <header className={cls.header}>
             <div className={cls.header_logo}>
@@ -24,11 +32,12 @@ const Header = () => {
                 <NavLink to={'/'} className={cls.header_navigate__item}>ЧАТ-БОТ</NavLink>
                 <NavLink to={'/'} className={cls.header_navigate__item}>ВАКАНСИИ</NavLink>
             </div>
-            {!true ? <Button onClick={() => navigate('/login')}>Войти</Button> :  <div className={cls.header_profile} onClick={toggleOpen}>
+            {!true ? <Button onClick={() => navigate('/login')}>Войти</Button>
+                   : <div ref={btnRef} className={cls.header_profile} onClick={toggleOpen}>
                 <div className={cls.header_profile__img}><img src={prof_icon} alt='avatar'/></div>
                 <img src={arrow} alt='arrow' className={cls.header_profile__arrow}/> 
                 {isOpen && (
-                        <div className={cls.header_profile__links}>
+                        <div className={cls.header_profile__links} ref={selectRef}>
                             <div className={cls.profile_links__item}><NavLink to= {`/profile/${id}`} >Профиль</NavLink></div>
                             <div className={cls.profile_links__item}><NavLink to="/logout">Выйти</NavLink></div>
                         </div>
