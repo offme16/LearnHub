@@ -17,7 +17,7 @@ export const ProfileSlice = createSlice({
         setScore: (state, action) => {
             state.score = action.payload;
           },
-        setDate: (state, action: PayloadAction<string>) => {
+        setDate: (state, action) => {
             state.date = action.payload;
           },
      },

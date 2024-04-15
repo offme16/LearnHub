@@ -20,6 +20,7 @@ const StackList = () => {
     const getID = (id: number) => {
         navigate(`/tasks/${id}`);
     }
+    
     return (
         <div className={cls.list}>
             {!data ? <Loader /> : data?.map((item) => <div key={item.id} className={cls.list_box}>

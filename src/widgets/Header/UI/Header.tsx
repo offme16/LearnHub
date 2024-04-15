@@ -28,7 +28,7 @@ const Header = () => {
                 <NavLink to={'/'}><h1>LEARNHUB</h1></NavLink>
             </div>
             <div className={cls.header_navigate}>
-                <NavLink to={'/tasks/'} className={cls.header_navigate__item}>ТЕСТИРОВАНИЕ</NavLink>
+                <NavLink to={`/tasks`} className={cls.header_navigate__item}>ТЕСТИРОВАНИЕ</NavLink>
                 <NavLink to={'/'} className={cls.header_navigate__item}>ЧАТ-БОТ</NavLink>
                 <NavLink to={'/'} className={cls.header_navigate__item}>ВАКАНСИИ</NavLink>
             </div>
@@ -38,7 +38,7 @@ const Header = () => {
                 <img src={arrow} alt='arrow' className={cls.header_profile__arrow}/> 
                 {isOpen && (
                         <div className={cls.header_profile__links} ref={selectRef}>
-                            <div className={cls.profile_links__item}><NavLink to= {`/profile/${id}`} >Профиль</NavLink></div>
+                            <div className={cls.profile_links__item}><NavLink to= {`/profile/${id}`}>Профиль</NavLink></div>
                             <div className={cls.profile_links__item}><NavLink to="/logout">Выйти</NavLink></div>
                         </div>
                     )}           
