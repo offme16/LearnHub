@@ -13,7 +13,12 @@ const initialState: UserSchema = {
 export const UserSlice = createSlice({
     name: 'user',
     initialState,
-    reducers: { },
+    reducers: { 
+        setUser: (state, action) => {
+            state.userID = action.payload;
+            state.isAuth = true;
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(userService.pending, (state) => {
@@ -22,8 +27,8 @@ export const UserSlice = createSlice({
             })
             .addCase(userService.fulfilled, (state, action) => {
                 state.isLoading = false;
-                state.userID = action.payload;
-                state.isAuth = true;
+                state.isAuth = false;
+                state.userID = '';
             })
             .addCase(userService.rejected, (state, action) => {
                 state.isLoading = false;

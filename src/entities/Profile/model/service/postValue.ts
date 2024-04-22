@@ -9,7 +9,7 @@ interface KnownError {
 }
 
 export const getValue = createAsyncThunk(
-    'get_value',
+    'post_value',
     async (valueData, thunkAPI) => {
         try {
             const response = await $api.post('/profile', {

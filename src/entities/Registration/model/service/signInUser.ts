@@ -1,7 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { $api } from 'shared/api/api';
 import { AxiosError } from 'axios';
-import { USER_LOCALSTORAGE_TOKEN } from 'shared/const/localStorage';
 
 interface RegistData {
     name: string;
@@ -19,15 +18,16 @@ export const siginUser = createAsyncThunk(
     'sigin',
     async (registData: RegistData, thunkAPI) => {
         try {
-            const response = await $api.post('/sigin', registData);
-
+            const response = await $api.post('http://localhost:5092/api/Auth/Register', 
+            {
+                userName: registData.name,
+                email: registData.email,
+                password: registData.password,
+            });
             if (!response.data) {
                 throw new Error();
             }
-            console.log(response.data);
-            localStorage.setItem(USER_LOCALSTORAGE_TOKEN, JSON.stringify(response.data));
             return response.data;
-
         } catch (e) {
             const error: AxiosError<KnownError> = e as any;
             alert(error.message);

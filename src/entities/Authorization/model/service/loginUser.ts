@@ -1,11 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { $api } from 'shared/api/api';
 import { AxiosError } from 'axios';
+import { USER_LOCALSTORAGE_ID, USER_LOCALSTORAGE_REFRESH, USER_LOCALSTORAGE_TOKEN } from 'shared/const/localStorage';
+import { UserActions } from 'entities/User';
 
 interface AuthData {
     name: string;
     password: string;
-  }
+}
   
 interface KnownError {
     message: string;
@@ -17,14 +19,29 @@ export const loginUser = createAsyncThunk(
     'login',
     async (authData: AuthData, thunkAPI) => {
         try {
-            const response = await $api.post('/login', authData);
+            const response = await $api.post('http://localhost:5092/api/Auth/Login', 
+            {
+                userName: authData.name,
+                password: authData.password,
+            });
 
             if (!response.data) {
                 throw new Error();
             }
-            console.log(response.data);
+            localStorage.setItem(
+                USER_LOCALSTORAGE_TOKEN,
+                JSON.stringify(response.data.jwt)
+              );
+            localStorage.setItem(
+                USER_LOCALSTORAGE_REFRESH,
+                JSON.stringify(response.data.refresh)
+            );
+            localStorage.setItem(
+                USER_LOCALSTORAGE_ID,
+                JSON.stringify(response.data.currentUser)
+            );
+            thunkAPI.dispatch(UserActions.setUser(response.data.currentUser));
             return response.data;
-
         } catch (e) {
             const error: AxiosError<KnownError> = e as any;
             alert(error.message);

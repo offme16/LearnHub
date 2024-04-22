@@ -35,7 +35,6 @@ const handlePassword = useCallback((value: string) => {
   const onSubmit = useCallback(
     async () => {
       try {
-        
         const result = await dispatch(loginUser({name, password}));
         if (result.meta.requestStatus === "rejected") {
           alert("Произошла ошибка: " + result.payload);

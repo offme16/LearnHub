@@ -41,7 +41,7 @@ const Registration = () => {
       const onSubmit = useCallback( async () => {
         const result = await  dispatch(siginUser({ name , password, email }));
          if(result.meta.requestStatus === "fulfilled") {
-            navigate("/");
+            navigate("/login");
           } else {
             alert("!!!")
           }
