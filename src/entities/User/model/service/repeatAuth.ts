@@ -1,11 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { $api } from 'shared/api/api';
-import { AxiosError } from 'axios';
+import axios, { AxiosError } from 'axios';
 import { USER_LOCALSTORAGE_TOKEN, USER_LOCALSTORAGE_REFRESH } from 'shared/const/localStorage';
 import { UserActions } from '../slice/UserSlice';
+import { baseUrl } from 'shared/api/api';
 
 interface Token {
-    jwtToken: string;
+    accessToken: string;
     refreshToken: string;
     userid: string;
 }
@@ -16,12 +16,12 @@ interface KnownError {
     code: number | undefined;
 }
 
-export const repeatAuth = createAsyncThunk<Token, { jwtToken: string; refreshToken: string }, { rejectValue: string }>(
+export const repeatAuth = createAsyncThunk<Token, { accessToken: string; refreshToken: string }, { rejectValue: string }>(
     'user_repAuth',
-    async ({ jwtToken, refreshToken }, thunkAPI) => {
+    async ({ accessToken, refreshToken }, thunkAPI) => {
         try {
-            const response = await $api.post<Token>('http://localhost:5092/api/Auth/RefreshToken', {
-                jwtToken: JSON.parse(jwtToken),
+            const response = await axios.post<Token>(`${baseUrl}User/RefreshToken`, {
+                accsessToken: JSON.parse(accessToken),
                 refreshToken: JSON.parse(refreshToken)
             });
 
@@ -30,7 +30,7 @@ export const repeatAuth = createAsyncThunk<Token, { jwtToken: string; refreshTok
             }
             localStorage.setItem(
                 USER_LOCALSTORAGE_TOKEN,
-                JSON.stringify(response.data.jwtToken)
+                JSON.stringify(response.data.accessToken)
               );
               localStorage.setItem(
                 USER_LOCALSTORAGE_REFRESH,

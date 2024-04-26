@@ -3,7 +3,7 @@ import style from "./ResultTest.module.scss";
 import { ProfileActions } from "entities/Profile";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch";
 import { useNavigate } from "react-router-dom";
-
+import photo from '../../../shared/assets/2278992.png'
 interface Result {
     result: number;
 };
@@ -28,8 +28,8 @@ export const ResultTest: React.FC<Result> = ({result}) => {
   };
         return (
           <div className={style.result}>
-            <img src="https://cdn-icons-png.flaticon.com/512/2278/2278992.png" />
-            <h2>Вы отгадали {result} из 10</h2>
+            <img src={photo} />
+            <h2>Вы ответили на {result} из 10</h2>
             <Button onClick={onSubmitClik}>Вернуться на главную</Button>
           </div>
 )};

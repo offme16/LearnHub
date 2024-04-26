@@ -8,6 +8,7 @@ const initialState: ProfileSchema = {
     isLoading: false,
     score: 0,
     date: "",
+    data: []
 };
 
 export const ProfileSlice = createSlice({
@@ -29,8 +30,7 @@ export const ProfileSlice = createSlice({
             })
             .addCase(getValue.fulfilled, (state, action) => {
                 state.isLoading = false;
-                state.date = action.payload;
-                state.score = action.payload;
+                state.data = action.payload;
             })
             .addCase(getValue.rejected, (state, action) => {
                 state.isLoading = false;

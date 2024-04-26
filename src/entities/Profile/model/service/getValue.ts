@@ -12,7 +12,7 @@ export const getValue = createAsyncThunk(
     'get_value',
     async (_, thunkAPI) => {
         try {
-            const response = await $api.get('/profile');
+            const response = await $api.get('Course/GetAllResults');
             if (!response.data) {
                 throw new Error();
             }

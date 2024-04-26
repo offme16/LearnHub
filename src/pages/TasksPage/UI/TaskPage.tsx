@@ -9,17 +9,15 @@ import { TestList } from 'widgets/TestList';
 import ResultTest from 'widgets/ResultTest';
 
 const TaskPage = () => {
-    const { id } = useParams<{ id: string }>();
-    
+    const { id = '' } = useParams<{ id: string }>();
     const dispatch = useAppDispatch();
     const tasks = useSelector(getTasks);
     const [step, setStep] = useState(0);
     const [result, setResult] = useState(0);
     const task = tasks?.filter(task => task.courseid === Number(id))?.[step];
-    
-    
+
     useEffect(() => {
-        dispatch(tasksService());
+        dispatch(tasksService(id));
     }, [id, dispatch]);
 
     const onClickVariable = (status: number) => {
@@ -32,7 +30,7 @@ const TaskPage = () => {
     return (
         <div className={cls.container}>
             {task 
-                ? <>{step === 2 ? <ResultTest result={result} /> : <TestList task={task} onClickVariable={onClickVariable} step={step}/>}  </> 
+                ? <>{step === 2  ? <ResultTest result={result} /> : <TestList task={task} onClickVariable={onClickVariable} step={step}/>}  </> 
                 : <Loader />}
         </div>
     );

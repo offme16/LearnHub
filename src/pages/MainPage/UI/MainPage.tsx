@@ -8,10 +8,10 @@ const MainPage: React.FC = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-          const jwtToken = localStorage.getItem(USER_LOCALSTORAGE_TOKEN);
+          const accessToken = (localStorage.getItem(USER_LOCALSTORAGE_TOKEN));
           const refreshToken = localStorage.getItem(USER_LOCALSTORAGE_REFRESH);
-          if (jwtToken && refreshToken) {
-              dispatch(repeatAuth({ jwtToken, refreshToken }));
+          if (accessToken && refreshToken) {
+              dispatch(repeatAuth({ accessToken, refreshToken }));
           }
   }, [dispatch]);
 

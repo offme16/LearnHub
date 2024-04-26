@@ -12,7 +12,7 @@ export const stackService = createAsyncThunk(
     'get_stack',
     async (_,thunkAPI) => {
         try {
-            const response = await $api.get('/mock');
+            const response = await $api.get('Course/GetAllCourses');
 
             if (!response.data) {
                 throw new Error();

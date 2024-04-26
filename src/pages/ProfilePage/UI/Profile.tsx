@@ -1,25 +1,27 @@
+import { useEffect } from "react";
 import style from "./Profile.module.scss";
 import { ReactECharts } from "shared/lib/Echarts/ReactECharts";
+import { useAppDispatch } from "shared/lib/hooks/useAppDispatch";
+import { getData, getResultScore, getValue } from "entities/Profile";
+import { useSelector } from "react-redux";
   
-  const data = [
-    { date: '2024-04-01', score: 80 },
-    { date: '2024-04-02', score: 85 },
-    { date: '2024-04-03', score: 90 },
-    { date: '2024-04-04', score: 88 },
-    { date: '2024-04-05', score: 92 },
-    // Добавьте свои данные по дате и баллам здесь
-  ];
 
 
 const Profile: React.FC = () => {
-    const dates = data.map(item => item.date);
-    const scores = data.map(item => item.score);
-  
-    // Конфигурация для графика
+  const dispatch = useAppDispatch();
+
+  useEffect( () => {
+    dispatch(getValue())
+  }, [dispatch]);
+
+  const data = useSelector(getData);
+
+  const scores = data.map(item => item.score);
+  const date = data.map(item => item.testDate.split('T')[0]);
     const option = {
       xAxis: {
         type: 'category',
-        data: dates,
+        data: date,
       },
       yAxis: {
         type: 'value',

@@ -5,7 +5,7 @@ export interface StackSchema {
 }
 
 export interface Stacks {
-    "id": number,
+    "courseID": number,
     "title": string,
     "description": string,
     "links"?: Links[],

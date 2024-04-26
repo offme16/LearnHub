@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { $api } from 'shared/api/api';
-import { AxiosError } from 'axios';
+import axios, { AxiosError } from 'axios';
+import { baseUrl } from 'shared/api/api';
 
 interface KnownError {
     message: string;
@@ -10,9 +10,11 @@ interface KnownError {
 
 export const tasksService = createAsyncThunk(
     'get_tasks',
-    async (_,thunkAPI) => {
+    async (id: string, thunkAPI) => {
         try {
-            const response = await $api.get(`tasks`);
+            const response = await axios.post(`${baseUrl}Course/FindTaskByID`, {
+                id
+            });
 
             if (!response.data) {
                 throw new Error();

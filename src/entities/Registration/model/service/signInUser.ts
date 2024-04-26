@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { $api } from 'shared/api/api';
-import { AxiosError } from 'axios';
+import { baseUrl } from 'shared/api/api';
+import axios, { AxiosError } from 'axios';
 
 interface RegistData {
     name: string;
@@ -18,10 +18,10 @@ export const siginUser = createAsyncThunk(
     'sigin',
     async (registData: RegistData, thunkAPI) => {
         try {
-            const response = await $api.post('http://localhost:5092/api/Auth/Register', 
+            const response = await axios.post(`${baseUrl}User/Registration`, 
             {
                 userName: registData.name,
-                email: registData.email,
+                //email: registData.email,
                 password: registData.password,
             });
             if (!response.data) {
