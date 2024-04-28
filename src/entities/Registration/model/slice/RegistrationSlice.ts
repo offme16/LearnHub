@@ -4,7 +4,7 @@ import { siginUser } from '../service/signInUser';
 
 
 const initialState: RegistSchema = {
-    error: undefined,
+    error: "",
     isLoading: false,
     username: "",
     password: "",

@@ -1,3 +1,3 @@
 import { StateSchema } from "app/providers/storeProvider/config/stateShema";
 
-export const getData = (state: StateSchema) => state?.stack?.data;
+export const getError = (state: StateSchema) => state?.regist.error;

@@ -4,9 +4,9 @@ import { stackService } from '../service/stackService';
 
 
 const initialState: StackSchema = {
-    error: undefined,
+    error: '',
     isLoading: false,
-    data: undefined
+    data: []
 };
 
 export const StackSlice = createSlice({

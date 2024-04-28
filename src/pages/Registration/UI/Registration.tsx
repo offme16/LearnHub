@@ -2,11 +2,12 @@ import { NavLink, useNavigate } from "react-router-dom";
 import style from "./Registration.module.scss"
 import { useForm } from "react-hook-form"
 import { useSelector } from "react-redux";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch";
-import { RegistActions, getIsLoading, siginUser, getUserName, getPassword, getEmail } from "entities/Registration";
+import { RegistActions, getIsLoading, siginUser, getUserName, getPassword, getEmail, getError } from "entities/Registration";
 import Loader from "shared/UI/Loader/Loader";
 import Button from "shared/UI/Button/Button";
+import Notification from "shared/UI/Notification/Notification";
 
 const Registration = () => {
   const dispatch = useAppDispatch();
@@ -14,7 +15,9 @@ const Registration = () => {
   const isLoading = useSelector( getIsLoading );
   const name = useSelector( getUserName );
   const password = useSelector( getPassword );
-  const email = useSelector( getEmail )
+  const email = useSelector( getEmail );
+  const Error = useSelector( getError );
+  const [visible, setVisible] = useState(false);
 
   const handleUsername = useCallback((value: string) => {
     dispatch(RegistActions.setUserName(value));
@@ -43,7 +46,7 @@ const Registration = () => {
          if(result.meta.requestStatus === "fulfilled") {
             navigate("/login");
           } else {
-            alert("!!!")
+            setVisible(true)
           }
       },[dispatch, navigate, name, password, email]);
       
@@ -67,6 +70,7 @@ const Registration = () => {
           У вас уже есть учетная запись? <NavLink to={'/login'} className={style.link}>Авторизоваться</NavLink>
       </p>
      </form>}
+     <Notification visible={visible} setVisible={setVisible}>{Error}</Notification>
     </div>
   );
 };

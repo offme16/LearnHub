@@ -6,5 +6,7 @@ import { getIsLoading } from "./model/selectors/getIsLoading";
 import { getUserName } from "./model/selectors/getUserName";
 import { getPassword } from "./model/selectors/getPassword";
 import { getEmail } from "./model/selectors/getEmail";
+import { getError } from "./model/selectors/getError";
 
-export { type RegistSchema, siginUser, RegistActions, RegistReducer, getIsLoading, getUserName, getPassword, getEmail};
+export { type RegistSchema, siginUser, RegistActions, RegistReducer,
+        getIsLoading, getUserName, getPassword, getEmail, getError};

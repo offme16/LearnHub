@@ -1,3 +1,3 @@
 import { StateSchema } from "app/providers/storeProvider/config/stateShema";
 
-export const getData = (state: StateSchema) => state?.stack?.data;
+export const getIsLoading = (state: StateSchema) => state?.stack?.isLoading;

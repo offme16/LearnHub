@@ -2,11 +2,11 @@ import React, { ButtonHTMLAttributes, FC } from 'react';
 import clsx from 'clsx';
 import cls from './Button.module.scss';
 
-export enum ThemeButton {
+enum ThemeButton {
     CLEAR = 'clear',
     DEFAULT = 'default'
 }
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;
     disabled?: boolean;
     theme?: ThemeButton;

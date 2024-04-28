@@ -1,0 +1,48 @@
+.myModal{
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    display: none;
+    z-index: 999;
+    img {
+        width: 50px;
+    }
+    .cancel{
+        position: relative;
+        top: -30px;
+        right: -260px;
+        cursor: pointer;
+    }
+}
+
+.myModalContent{
+    padding: 20px;
+    border-radius: 10px;
+    min-width: 250px;
+    background-color: #ececec;
+    display: flex;
+    flex-direction: column;
+
+    span{
+        font-weight: 700;
+    }
+    p{
+        padding-left: 25px;
+    }
+}
+
+.myModal__head{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    img{
+        width: 20px;
+    }
+}
+
+.myModal.active{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
