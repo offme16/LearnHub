@@ -32,7 +32,7 @@ export const AuthSlice = createSlice({
             })
             .addCase(loginUser.rejected, (state, action) => {
                 state.isLoading = false;
-                state.error = typeof action.payload === 'string' ? action.payload : 'Произошла ошибка';
+                state.error = typeof action.payload === 'string' ? action.payload : 'Неправильный логин или пароль';
             });
     },
 });

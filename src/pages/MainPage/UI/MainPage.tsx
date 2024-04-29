@@ -4,7 +4,7 @@ import { StackList } from 'widgets/StackList';
 import { useEffect } from 'react';
 import { USER_LOCALSTORAGE_REFRESH, USER_LOCALSTORAGE_TOKEN } from 'shared/const/localStorage';
 import { repeatAuth } from 'entities/User';
-const MainPage: React.FC = () => {
+const MainPage = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -17,6 +17,7 @@ const MainPage: React.FC = () => {
 
     return (
         <div className={cls.MainPage}>
+            
             <StackList />
         </div>
     )

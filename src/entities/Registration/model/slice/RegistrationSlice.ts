@@ -28,7 +28,7 @@ export const RegistSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(siginUser.pending, (state) => {
-                state.error = undefined;
+                state.error = '';
                 state.isLoading = true;
             })
             .addCase(siginUser.fulfilled, (state) => {
@@ -36,7 +36,7 @@ export const RegistSlice = createSlice({
             })
             .addCase(siginUser.rejected, (state, action) => {
                 state.isLoading = false;
-                state.error = typeof action.payload === 'string' ? action.payload : 'Произошла ошибка';
+                state.error =  typeof action.payload == 'string' ? action.payload : 'Произошла ошибка';
             });
     },
 });

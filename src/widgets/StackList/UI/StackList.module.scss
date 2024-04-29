@@ -23,4 +23,25 @@
         padding: 5px;
         margin-bottom: 10px;
     }
+    .btn_roadmap {
+        position: absolute;
+        top: 88px;
+        right: 137px;
+        background-color: rgb(255, 255, 255);
+        border-radius: 50%;
+        width: 55px;
+        height: 55px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        cursor: pointer;
+        img {
+            width: 50px;
+        }
+    }
+    
+    .btn_roadmap:hover {
+        background-color: rgb(231, 231, 231);
+    }
 }

@@ -14,8 +14,9 @@ const TaskPage = () => {
     const tasks = useSelector(getTasks);
     const [step, setStep] = useState(0);
     const [result, setResult] = useState(0);
-    const task = tasks?.filter(task => task.courseid === Number(id))?.[step];
 
+    const task = tasks?.filter(task => task.courseid === Number(id))?.[step];
+    
     useEffect(() => {
         dispatch(tasksService(id));
     }, [id, dispatch]);
@@ -30,7 +31,7 @@ const TaskPage = () => {
     return (
         <div className={cls.container}>
             {task 
-                ? <>{step === 2  ? <ResultTest result={result} /> : <TestList task={task} onClickVariable={onClickVariable} step={step}/>}  </> 
+                ? <> {step === 2  ? <ResultTest result={result} /> : <TestList task={task} onClickVariable={onClickVariable} step={step}/>}  </> 
                 : <Loader />}
         </div>
     );

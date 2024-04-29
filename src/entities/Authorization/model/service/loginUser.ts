@@ -44,8 +44,7 @@ export const loginUser = createAsyncThunk(
             return response.data;
         } catch (e) {
             const error: AxiosError<KnownError> = e as any;
-            alert(error.message);
-            return thunkAPI.rejectWithValue('Произошла ошибка');
+            return thunkAPI.rejectWithValue(error.response?.data);
         }
     },
 );

@@ -8,9 +8,9 @@
         width: 50px;
     }
     .cancel{
-        position: relative;
-        top: -30px;
-        right: -260px;
+        position: absolute;
+        top: 0;
+        right: 0;
         cursor: pointer;
     }
 }
@@ -45,4 +45,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    animation: slide-up 0.3s ease-out;
 }
+  
+  @keyframes slide-up {
+    0% {
+      transform: translateY(100%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }

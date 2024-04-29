@@ -46,7 +46,6 @@ const handlePassword = useCallback((value: string) => {
         }
       } catch (error) {
         console.error("Произошла ошибка:", error);
-        alert("Произошла ошибка при входе!");
       }
     },
     [dispatch, navigate, name, password]

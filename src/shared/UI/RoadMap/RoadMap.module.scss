@@ -1,0 +1,46 @@
+.roadmap {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    &__item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+    &__dot {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #fff;
+      border: 4px solid #4caf50;
+      box-sizing: border-box;
+      padding: 10px;
+      margin-top: 10px;
+      z-index: 1;
+    }
+    &__title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+      text-transform: uppercase;
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #fff;
+      padding: 0 10px;
+      border-radius: 5px;
+    }
+    &__arrow {
+      position: absolute;
+      top: 32px;
+      right: -20px;
+      width: 0;
+      height: 0;
+      border-top: 20px solid transparent;
+      border-bottom: 20px solid transparent;
+      border-left: 20px solid #4caf50;
+      z-index: 0;
+    }
+  }
