@@ -7,5 +7,6 @@ export interface ProfileSchema {
 }
 export interface Result {
     score: number,
-    testDate: string
+    testDate: string,
+    courseName: string
 }

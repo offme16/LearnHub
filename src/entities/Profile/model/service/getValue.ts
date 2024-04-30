@@ -10,9 +10,12 @@ interface KnownError {
 
 export const getValue = createAsyncThunk(
     'get_value',
-    async (_, thunkAPI) => {
+    async (userId: string, thunkAPI) => {
         try {
-            const response = await $api.get('Course/GetAllResults');
+            const response = await $api.post('Course/GetUserProgressByDifferentCourse',
+                userId,
+                {headers: {'Content-Type': 'application/json'}}
+            );
             if (!response.data) {
                 throw new Error();
             }

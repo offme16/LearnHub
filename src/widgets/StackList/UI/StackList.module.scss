@@ -18,7 +18,10 @@
         box-shadow:  22px 22px 49px #b5b5b5,
                     -22px -22px 49px #ffffff;  
     }
-    
+    .list__btns {
+        display: flex;
+        gap: 10px;
+    }
     .list_box__links {
         padding: 5px;
         margin-bottom: 10px;

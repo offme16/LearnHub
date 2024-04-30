@@ -2,14 +2,18 @@ import { Task } from "entities/Tasks/model/type/type";
 import style from "./TestList.module.scss";
 
 interface TestListProps {
-    task: Task;
-    onClickVariable: (id: number) => void;
-    step: number;
+  tasks: Task[];
+  onClickVariable: (id: number) => void;
+  step: number;
+  leng: number;
 }
 
-const TestList: React.FC<TestListProps> = ( { task, onClickVariable, step } ) => {
-    const progress = task.answers ? Math.round((step / task.answers?.length)*100) : 0; // как будет подкл с бэком, сделать нормально
+const TestList: React.FC<TestListProps> = ( { tasks, onClickVariable, step, leng } ) => {
+    const progress = tasks ? Math.round((step / leng)*100) : 0;
+    console.log(tasks);
     
+    const task = tasks[step];
+
     return (
       <div className={style.container_test}>
         <div className={style.progress}>
@@ -17,7 +21,7 @@ const TestList: React.FC<TestListProps> = ( { task, onClickVariable, step } ) =>
         </div>
         <h1>{task.description}</h1>
         <ul>
-          {task?.answers?.map((e) => <li onClick={()=> onClickVariable(e.status)} key={e.id}>{e.answer}</li>)}
+          {task.answers.map((e) => <li onClick={()=> onClickVariable(e.status)} key={e.resultID}>{e.answer}</li>)}
         </ul>
       </div>
     );

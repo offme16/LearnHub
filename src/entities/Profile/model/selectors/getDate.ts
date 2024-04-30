@@ -1,3 +1,3 @@
 import { StateSchema } from "app/providers/storeProvider/config/stateShema";
 
-export const getData = (state: StateSchema) => state?.profile.data;
+export const getDate = (state: StateSchema) => state?.profile.date;

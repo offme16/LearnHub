@@ -1,35 +1,38 @@
 import Button from "shared/UI/Button/Button";
 import style from "./ResultTest.module.scss";
-import { ProfileActions } from "entities/Profile";
+import { ProfileActions, getDate, getResultScore, postValue } from "entities/Profile";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch";
 import { useNavigate } from "react-router-dom";
 import photo from '../../../shared/assets/2278992.png'
+import { useSelector } from "react-redux";
+import { getCourseID } from "entities/Tasks";
+import { USER_COURSE_ID } from "shared/const/localStorage";
 interface Result {
     result: number;
+    maxLenght: number;
 };
 
-export const ResultTest: React.FC<Result> = ({result}) => {
+export const ResultTest: React.FC<Result> = ({result, maxLenght}) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const date = useSelector(getDate);
+  const score = result;
+  const userCourseId = JSON.parse(localStorage.getItem(USER_COURSE_ID) || 'null')
+
 
   function getDate() {
-    const currentDate = new Date();
-    const year = currentDate.getFullYear();
-    const month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
-    const day = currentDate.getDate().toString().padStart(2, '0');
-    const todayDay = `${day}.${month}.${year}`;
-    return todayDay;
+    return new Date();
   }
 
-  const onSubmitClik = () => {
-    dispatch(ProfileActions.setScore(result));
+  const onSubmitClik = async () => {
     dispatch(ProfileActions.setDate(getDate()));
-    navigate("/")
+    await dispatch(postValue({date, score, userCourseId}));
+    navigate("/");
   };
         return (
           <div className={style.result}>
             <img src={photo} />
-            <h2>Вы ответили на {result} из 10</h2>
+            <h2>Вы ответили на {result} из {maxLenght}</h2>
             <Button onClick={onSubmitClik}>Вернуться на главную</Button>
           </div>
 )};

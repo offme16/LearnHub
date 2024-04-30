@@ -4,19 +4,30 @@ import { tasksService } from '../service/taskService';
 
 
 const initialState: TasksSchema = {
-    error: undefined,
+    error: '',
     isLoading: false,
-    data: undefined
+    data: {
+        courseID: 0,
+        title: null,
+        description: null,
+        tasks: [],
+        links: null,
+    },
+    userCourseID: 0,
 };
 
 export const TaskSlice = createSlice({
     name: 'task',
     initialState,
-    reducers: { },
+    reducers: {
+        setUserCourseID: (state, action) => {
+            state.userCourseID = action.payload.userCourseID;
+        }
+     },
     extraReducers: (builder) => {
         builder
             .addCase(tasksService.pending, (state) => {
-                state.error = undefined;
+                state.error = '';
                 state.isLoading = true;
             })
             .addCase(tasksService.fulfilled, (state, action) => {

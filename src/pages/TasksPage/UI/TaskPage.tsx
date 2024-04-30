@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect  } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
@@ -7,6 +7,7 @@ import cls from './TaskPage.module.scss';
 import Loader from 'shared/UI/Loader/Loader';
 import { TestList } from 'widgets/TestList';
 import ResultTest from 'widgets/ResultTest';
+import { ProfileActions } from 'entities/Profile';
 
 const TaskPage = () => {
     const { id = '' } = useParams<{ id: string }>();
@@ -14,12 +15,12 @@ const TaskPage = () => {
     const tasks = useSelector(getTasks);
     const [step, setStep] = useState(0);
     const [result, setResult] = useState(0);
-
-    const task = tasks?.filter(task => task.courseid === Number(id))?.[step];
-    
     useEffect(() => {
-        dispatch(tasksService(id));
+    dispatch(tasksService(Number(id)));
     }, [id, dispatch]);
+
+    const task = tasks.length > 0 ? tasks[0] : null;
+    const leng = tasks.length;
 
     const onClickVariable = (status: number) => {
         setStep(step + 1);
@@ -30,8 +31,8 @@ const TaskPage = () => {
 
     return (
         <div className={cls.container}>
-            {task 
-                ? <> {step === 2  ? <ResultTest result={result} /> : <TestList task={task} onClickVariable={onClickVariable} step={step}/>}  </> 
+            {task
+                ? <> {step === tasks.length  ? <ResultTest result={result} maxLenght={leng} /> : <TestList tasks={tasks} onClickVariable={onClickVariable} step={step} leng={leng}/>}  </> 
                 : <Loader />}
         </div>
     );

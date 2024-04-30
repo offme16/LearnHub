@@ -5,14 +5,12 @@ import { useSelector } from "react-redux";
 import { useCallback, useState } from "react";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch";
 import { RegistActions, getIsLoading, siginUser, getUserName, getPassword, getEmail, getError } from "entities/Registration";
-import Loader from "shared/UI/Loader/Loader";
 import Button from "shared/UI/Button/Button";
 import Notification from "shared/UI/Notification/Notification";
 
 const Registration = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const isLoading = useSelector( getIsLoading );
   const name = useSelector( getUserName );
   const password = useSelector( getPassword );
   const email = useSelector( getEmail );
@@ -52,7 +50,7 @@ const Registration = () => {
       
   return (
     <div className={style.container}>
-      { isLoading ? <Loader /> : <form className={style.form} method="post" >
+      <form className={style.form} method="post" >
       <p className={style.title}>Регистрация</p>
         <input {...register("name", {required: true})}  placeholder="Имя пользователя" type="text" className={style.input} onChange={e => handleUsername(e.target.value)}/> 
         <input {...register("email", {required: true})} placeholder="Email" type="email" className={style.input} onChange={e => handleEmail(e.target.value)}/>
@@ -69,7 +67,7 @@ const Registration = () => {
       <p className={style.signin}>
           У вас уже есть учетная запись? <NavLink to={'/login'} className={style.link}>Авторизоваться</NavLink>
       </p>
-     </form>}
+     </form>
      <Notification visible={visible} setVisible={setVisible}>{Error}</Notification>
     </div>
   );

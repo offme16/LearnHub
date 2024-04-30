@@ -11,6 +11,8 @@ import NotResult from 'widgets/NotResult/NotResult';
 import map from "../../../shared/assets/211858_map_icon.png"
 import Modal from 'shared/UI/Modal/Modal';
 import RoadMap from 'shared/UI/RoadMap/RoadMap';
+import { sigUpCourse } from 'entities/Tasks';
+
 const StackList = () => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
@@ -23,9 +25,10 @@ const StackList = () => {
     },[dispatch])
 
     const getID = (id: number) => {
+        dispatch(sigUpCourse(id));
         navigate(`/tasks/${id}`);
     }
-    const x = "fdfdsfsdfsd";
+
     return (
         <div className={cls.list}>
             <div className={cls.btn_roadmap} onClick={() => setVisible(true)}><img src={map} alt="roadmap" /></div>
@@ -37,7 +40,10 @@ const StackList = () => {
                      <h4>{e.title}</h4>
                      <a href={e.url} target="_blank">Перейти по ссылке</a>
                  </div>)}
-             <Button onClick={() => getID(item.courseID)}>Пройти тест</Button>
+                <div className={cls.list__btns}>
+                 <Button onClick={() => getID(item.courseID)}>Пройти тест</Button>
+                </div>
+             
          </div>)}
         <Modal visible={visible} setVisible={setVisible}><RoadMap /></Modal>
         </div>

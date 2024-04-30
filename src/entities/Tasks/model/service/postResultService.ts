@@ -8,26 +8,23 @@ interface KnownError {
     code: number | undefined;
 }
 
-export const tasksService = createAsyncThunk(
-    'get_tasks',
-    async (id: number, thunkAPI) => {
+export const postResultService = createAsyncThunk(
+    'post_result',
+    async (id: string, thunkAPI) => {
         try {
-            const response = await axios.post(`https://localhost:7102/Course/GetTasksByCourseId`,
-                JSON.stringify(id),
-                {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                }
-            );
+            const response = await axios.post(`${baseUrl}Course/FindTaskByID`, {
+                id
+            });
 
             if (!response.data) {
                 throw new Error();
             }
+            console.log(response.data);
             return response.data;
 
         } catch (e) {
             const error: AxiosError<KnownError> = e as any;
+            alert(error.message);
             return thunkAPI.rejectWithValue('Произошла ошибка');
         }
     },

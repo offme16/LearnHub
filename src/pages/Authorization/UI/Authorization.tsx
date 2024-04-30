@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 import { useNavigate, NavLink } from "react-router-dom";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch";
 import Button from "shared/UI/Button/Button";
-import Loader from "shared/UI/Loader/Loader";
 import { loginUser } from "entities/Authorization/model/service/loginUser";
 import { AuthActions, getError, getIsLoading, getPassword, getUserName } from "entities/Authorization";
 import Notification from "shared/UI/Notification/Notification";
@@ -13,7 +12,6 @@ import Notification from "shared/UI/Notification/Notification";
 const Authorization = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const isLoading = useSelector( getIsLoading );
   const name = useSelector( getUserName );
   const password = useSelector( getPassword );
   const Error = useSelector( getError );
@@ -53,7 +51,6 @@ const handlePassword = useCallback((value: string) => {
 
   return (
     <div className={style.container}>
-      { isLoading ?  <Loader />:
         <form
         className={style.form}
         method="post"
@@ -83,8 +80,6 @@ const handlePassword = useCallback((value: string) => {
           <p className={style.signin}>Вы не зарегистрированны? <NavLink to={'/sigin'} className={style.link}>Зарегистрироваться</NavLink></p>
           </div>
       </form> 
-      
-      }
       <Notification visible={visible} setVisible={setVisible}>{Error}</Notification>
     </div>
   );

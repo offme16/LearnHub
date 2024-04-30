@@ -1,3 +1,3 @@
 import { StateSchema } from "app/providers/storeProvider/config/stateShema";
 
-export const getTasks = (state: StateSchema) => state?.task?.data?.tasks;
+export const getData = (state: StateSchema) => state?.profile.data;
