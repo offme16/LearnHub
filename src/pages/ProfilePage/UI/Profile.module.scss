@@ -1,0 +1,16 @@
+.profile {
+    display: flex;
+    flex-direction: column;
+
+    h1 {
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .course {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+    }
+
+}

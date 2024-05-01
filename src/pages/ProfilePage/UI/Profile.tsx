@@ -17,7 +17,7 @@ const Profile: React.FC = () => {
 
   const data = useSelector(getData);
 
-  const courses = ["JS", "Html", "CSS"];
+  const courses = ["JAVASCRIPT", "HTML", "CSS"];
 
   return (
     <div className={style.profile}>
@@ -41,14 +41,22 @@ const Profile: React.FC = () => {
           xAxis: {
             type: "category",
             data: dates,
-            axisLabel: {
-              interval: 0,
-              rotate: 45,
-            },
+            boundaryGap: false,
+            axisLine: {
+              show: false
+          },
+          axisTick: {
+            show: false,
+        },
           },
           yAxis: {
             type: "value",
           },
+          splitLine: {
+            lineStyle: {
+                type: 'dashed',
+            }
+        },
           series: [
             {
               data: scores,

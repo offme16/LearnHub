@@ -19,7 +19,8 @@ const StackList = () => {
     const loading  = useSelector(getIsLoading);
     const data = useSelector(getData);
     const error = useSelector(getError);
-    const [visible, setVisible] = useState(false)
+    const [visible, setVisible] = useState(false);
+
     useEffect(() => {
         dispatch(stackService());
     },[dispatch])
@@ -29,6 +30,7 @@ const StackList = () => {
         navigate(`/tasks/${id}`);
     }
 
+
     return (
         <div className={cls.list}>
             <div className={cls.btn_roadmap} onClick={() => setVisible(true)}><img src={map} alt="roadmap" /></div>
@@ -36,9 +38,9 @@ const StackList = () => {
              :  loading ? <Loader /> : data?.map((item) => <div key={item.courseID} className={cls.list_box}>
              <h2>{item.title}</h2>
              <p>{item.description}</p>
-                 {item.links?.map((e) => <div key={e.id} className={cls.list_box__links}>
-                     <h4>{e.title}</h4>
-                     <a href={e.url} target="_blank">Перейти по ссылке</a>
+                 {item.links.map((e) => <div className={cls.list_box__links}>
+                     <h4>Полезные ссылки</h4>
+                     <a href={e} target="_blank">Перейти на материал</a>
                  </div>)}
                 <div className={cls.list__btns}>
                  <Button onClick={() => getID(item.courseID)}>Пройти тест</Button>

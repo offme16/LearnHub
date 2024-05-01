@@ -6,11 +6,13 @@ import { NavLink, Navigate, useNavigate } from 'react-router-dom';
 import Button from 'shared/UI/Button/Button';
 import { useRef, useState } from 'react';
 import { useOutsideClick } from 'shared/lib/hooks/useOutsideClick';
-import { useSelector } from 'react-redux';
-import { getAuth } from 'entities/User';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAuth, userService } from 'entities/User';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 
 
 const Header = () => {
+    const dispatch = useAppDispatch();
     const isAuth = useSelector(getAuth);
     const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
@@ -43,7 +45,7 @@ const Header = () => {
                 {isOpen && (
                         <div className={cls.header_profile__links} ref={selectRef}>
                             <div className={cls.profile_links__item}><NavLink to= {`/profile/${id}`}>Профиль</NavLink></div>
-                            <div className={cls.profile_links__item}><NavLink to="/logout">Выйти</NavLink></div>
+                            <div className={cls.profile_links__item}><NavLink to="/" onClick={() => dispatch(userService())}>Выйти</NavLink></div>
                         </div>
                     )}           
             </div>}

@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { $api } from 'shared/api/api';
 import { AxiosError } from 'axios';
-import { USER_LOCALSTORAGE_TOKEN } from 'shared/const/localStorage';
+import { USER_COURSE_ID, USER_LOCALSTORAGE_ID, USER_LOCALSTORAGE_REFRESH, USER_LOCALSTORAGE_TOKEN } from 'shared/const/localStorage';
 
 interface KnownError {
     message: string;
@@ -19,8 +19,10 @@ export const userService = createAsyncThunk(
                 throw new Error();
             }
             localStorage.removeItem(USER_LOCALSTORAGE_TOKEN);
+            localStorage.removeItem(USER_LOCALSTORAGE_REFRESH);
+            localStorage.removeItem(USER_COURSE_ID);
+            localStorage.removeItem(USER_LOCALSTORAGE_ID);
             return response.data;
-
         } catch (e) {
             const error: AxiosError<KnownError> = e as any;
             alert(error.message);
