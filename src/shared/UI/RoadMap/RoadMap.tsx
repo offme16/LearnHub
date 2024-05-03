@@ -3,7 +3,7 @@ import cls from './RoadMap.module.scss';
 
 const Roadmap = () => {
   const items = [
-    { id: 1, title: 'HTML + CSS', color: '#ff5722', resources: ['Scrimba', 'Udacity', 'Udemy'] },
+    { id: 1, title: 'HTML + CSS', color: '#ff5722', resources: ['Основы HTML', 'Основы CSS', 'Адаптивная верстка'] },
     { id: 2, title: 'JavaScript', color: '#f0db4f', resources: ['Scrimba', 'Udemy', 'FreeCodeCamp'] },
     { id: 3, title: 'Git + GitHub', color: '#f1502f', resources: ['Udemy', 'Coursera', 'Youtube'] },
     { id: 4, title: 'React.js', color: '#61dbfb', resources: ['Scrimba', 'Udacity', 'Udemy', 'beta.reactjs.org'] },

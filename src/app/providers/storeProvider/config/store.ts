@@ -6,6 +6,7 @@ import { AuthReducer } from 'entities/Authorization';
 import { RegistReducer } from 'entities/Registration';
 import { ProfileReducer } from 'entities/Profile';
 import { UserReducer } from 'entities/User';
+import { VacancyReducer } from 'entities/Vacancy';
 
 export function createRootStore(initialState?: StateSchema) {
     const rootReducer: ReducersMapObject<StateSchema> = {
@@ -15,6 +16,7 @@ export function createRootStore(initialState?: StateSchema) {
          regist: RegistReducer,
          profile: ProfileReducer,
          user: UserReducer,
+         vacancy: VacancyReducer
     };
 
     return configureStore<StateSchema>({

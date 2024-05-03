@@ -4,6 +4,7 @@ import { RegistSchema } from 'entities/Registration';
 import { StackSchema } from 'entities/Stack';
 import { TasksSchema } from 'entities/Tasks';
 import { UserSchema } from 'entities/User';
+import { VacancySchema } from 'entities/Vacancy';
 
 export interface StateSchema {
     task: TasksSchema;
@@ -12,6 +13,7 @@ export interface StateSchema {
     regist: RegistSchema;
     profile: ProfileSchema;
     user: UserSchema;
+    vacancy: VacancySchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

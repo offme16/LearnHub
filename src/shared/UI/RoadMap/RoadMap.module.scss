@@ -17,7 +17,6 @@
     gap: 20px;
   }
   &__item {
-    background-color: #f9f9f9;
     padding: 1rem;
     border-radius: 0.5rem;
     &Title {
@@ -29,6 +28,7 @@
       padding: 0.5rem;
       border-radius: 0.25rem;
       color: #fff;
+      margin-bottom: 10px;
     }
     &List {
       list-style: none;

@@ -36,7 +36,7 @@ const Header = () => {
             <div className={cls.header_navigate}>
                 <NavLink to={`/tasks`} className={cls.header_navigate__item}>ТЕСТИРОВАНИЕ</NavLink>
                 <NavLink to={'/'} className={cls.header_navigate__item}>ЧАТ-БОТ</NavLink>
-                <NavLink to={'/'} className={cls.header_navigate__item}>ВАКАНСИИ</NavLink>
+                <NavLink to={'/vacancy'} className={cls.header_navigate__item}>ВАКАНСИИ</NavLink>
             </div>
             {!isAuth ? <Button onClick={() => navigate('/login')}>Войти</Button>
                    : <div ref={btnRef} className={cls.header_profile} onClick={toggleOpen}>

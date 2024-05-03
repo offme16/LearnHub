@@ -1,0 +1,43 @@
+.vacancy {
+    max-width: 1440px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .title {
+    margin-bottom: 1rem;
+  }
+  
+  .subtitle {
+    font-size: 1.25rem;
+    font-weight: normal;
+    color: #777;
+    margin-bottom: 1rem;
+  }
+  
+  .vacancy_list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    gap: 1rem;
+  }
+  
+  .vacancy_item {
+    flex-basis: calc(33.333% - 1rem);
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: baseline;
+  }
+  
+  .vacancy_name {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  
