@@ -1,16 +1,60 @@
-import React from 'react';
 import cls from './RoadMap.module.scss';
 
 const Roadmap = () => {
   const items = [
-    { id: 1, title: 'HTML + CSS', color: '#ff5722', resources: ['Основы HTML', 'Основы CSS', 'Адаптивная верстка'] },
-    { id: 2, title: 'JavaScript', color: '#f0db4f', resources: ['Scrimba', 'Udemy', 'FreeCodeCamp'] },
-    { id: 3, title: 'Git + GitHub', color: '#f1502f', resources: ['Udemy', 'Coursera', 'Youtube'] },
-    { id: 4, title: 'React.js', color: '#61dbfb', resources: ['Scrimba', 'Udacity', 'Udemy', 'beta.reactjs.org'] },
-    { id: 5, title: 'Build 2 Websites', color: '#e34c26', resources: ['Landing Page', 'Social Media Links', 'Landing Page Clone'] },
-    { id: 6, title: 'Practice & Build Projects', color: '#cccccc', resources: ['Build 1-2 challenging projects', 'Build a portfolio website', 'Update your LinkedIn profile', 'Start applying for jobs'] },
-    { id: 7, title: 'Challenges', color: '#4caf50', resources: ['codewars.com', 'frontendmentor.io', 'javascript30.com'] },
-    { id: 8, title: 'Next Steps', color: '#007acc', resources: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Code as much as possible'] },
+    {
+      id: 1,
+      title: 'HTML + CSS',
+      color: '#ff5722',
+      resources: ['Основы HTML', 'Основы CSS', 'Адаптивная верстка'],
+    },
+    {
+      id: 2,
+      title: 'JavaScript',
+      color: '#f0db4f',
+      resources: ['Основы JS', 'DOM', 'c'],
+    },
+    {
+      id: 3,
+      title: 'Git + GitHub',
+      color: '#f1502f',
+      resources: ['', 'Coursera', 'Youtube'],
+    },
+    {
+      id: 4,
+      title: 'React.js',
+      color: '#61dbfb',
+      resources: ['Scrimba', 'Udacity', 'Udemy', 'beta.reactjs.org'],
+    },
+    {
+      id: 5,
+      title: 'Создание 2 сайтов',
+      color: '#e34c26',
+      resources: ['Landing Page', 'Ссылки на социальные медиа', 'Клон Landing Page'],
+    },
+    {
+      id: 6,
+      title: 'Практика и создание проектов',
+      color: '#cccccc',
+      resources: [
+        'Создание 1-2 сложных проектов',
+        'Создание портфолио сайта',
+        'Обновление профиля LinkedIn',
+        'Начало поиска работы',
+      ],
+    },
+    {
+      id: 7,
+      title: 'Задания',
+      color: '#4caf50',
+      resources: ['codewars.com', 'frontendmentor.io', 'javascript30.com'],
+    },
+    {
+      id: 8,
+      title: 'Дальнейшие шаги',
+      color: '#007acc',
+      resources: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Максимальное количество кода'],
+    },
   ];
 
   return (

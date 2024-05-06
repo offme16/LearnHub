@@ -10,14 +10,14 @@ interface KnownError {
     code: number | undefined;
 }
 
-const userId = localStorage.getItem(USER_LOCALSTORAGE_ID)?.replace(/[\\"]/g, '');
-
 export const sigUpCourse = createAsyncThunk(
     'sigup_course',
     async (courseId: number, thunkAPI) => {
+        const userId = JSON.parse(localStorage.getItem(USER_LOCALSTORAGE_ID) || '{}');
+        
         try {
             const response = await axios.post(`${baseUrl}Course/SignUpCourse?courseId=${courseId}`,
-            JSON.stringify(userId),
+            userId,
                 {headers: {'Content-Type': 'application/json'}}
             );
 

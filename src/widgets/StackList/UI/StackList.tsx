@@ -26,8 +26,11 @@ const StackList = () => {
     },[dispatch])
 
     const getID = (id: number) => {
-        dispatch(sigUpCourse(id));
-        navigate(`/tasks/${id}`);
+        const handleClick = async () => {
+            await dispatch(sigUpCourse(id));
+            navigate(`/tasks/${id}`);
+        }
+        handleClick();
     }
 
 
@@ -38,10 +41,6 @@ const StackList = () => {
              :  loading ? <Loader /> : data?.map((item) => <div key={item.courseID} className={cls.list_box}>
              <h2>{item.title}</h2>
              <p>{item.description}</p>
-                 {item.links.map((e) => <div className={cls.list_box__links}>
-                     <h4>Полезные ссылки</h4>
-                     <a href={e} target="_blank">Перейти на материал</a>
-                 </div>)}
                 <div className={cls.list__btns}>
                  <Button onClick={() => getID(item.courseID)}>Пройти тест</Button>
                 </div>
