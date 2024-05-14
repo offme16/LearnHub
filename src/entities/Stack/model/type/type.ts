@@ -1,7 +1,8 @@
 export interface StackSchema {
     data?:  Stacks[],
     isLoading: boolean,
-    error?: string, 
+    error?: string,
+    Url: UrlStack[],  
 }
 
 export interface Stacks {
@@ -9,4 +10,16 @@ export interface Stacks {
     "title": string,
     "description": string,
     "links": [],
+}
+
+export interface UrlStack {
+    "id": number,
+    "name": string,
+    "resources": Resourse[],
+    "color": string
+}
+export interface Resourse {
+    "title": string,
+    "link": string,
+
 }

@@ -1,7 +1,7 @@
 import Button from 'shared/UI/Button/Button';
 import cls from './StackList.module.scss';
 import { useSelector } from 'react-redux';
-import { getData, getError, getIsLoading } from 'entities/Stack';
+import { getData, getError, getIsLoading, getResourse } from 'entities/Stack';
 import { useEffect, useState } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { stackService } from 'entities/Stack';
@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import NotResult from 'widgets/NotResult/NotResult';
 import map from "../../../shared/assets/211858_map_icon.png"
 import Modal from 'shared/UI/Modal/Modal';
-import RoadMap from 'shared/UI/RoadMap/RoadMap';
+import RoadMap from 'widgets/RoadMap/RoadMap';
 import { sigUpCourse } from 'entities/Tasks';
 
 const StackList = () => {
@@ -23,6 +23,7 @@ const StackList = () => {
 
     useEffect(() => {
         dispatch(stackService());
+        dispatch(getResourse());
     },[dispatch])
 
     const getID = (id: number) => {

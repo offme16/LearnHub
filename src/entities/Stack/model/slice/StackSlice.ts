@@ -1,18 +1,24 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { StackSchema } from '../type/type';
 import { stackService } from '../service/stackService';
+import { getResourse } from '../service/getResourse';
 
 
 const initialState: StackSchema = {
     error: '',
     isLoading: false,
-    data: []
+    data: [],
+    Url: [],
 };
 
 export const StackSlice = createSlice({
     name: 'stack',
     initialState,
-    reducers: { },
+    reducers: {
+        getUrl: (state, action) => {
+            state.Url = action.payload;
+        }
+     },
     extraReducers: (builder) => {
         builder
             .addCase(stackService.pending, (state) => {
@@ -22,6 +28,10 @@ export const StackSlice = createSlice({
             .addCase(stackService.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.data = action.payload;
+            })
+            .addCase(getResourse.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.Url = action.payload;
             })
             .addCase(stackService.rejected, (state, action) => {
                 state.isLoading = false;

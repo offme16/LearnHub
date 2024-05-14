@@ -11,7 +11,7 @@ interface Result {
     maxLenght: number;
 };
 
-export const ResultTest: React.FC<Result> = ({result, maxLenght}) => {
+export const ResultTest: React.FC<Result> = ({result}) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const date = useSelector(getDate);
@@ -32,7 +32,7 @@ export const ResultTest: React.FC<Result> = ({result, maxLenght}) => {
         return (
           <div className={style.result}>
             <img src={photo} />
-            <h2>Вы ответили на {result} из {maxLenght}</h2>
+            <h2>Вы ответили на {result*10}%</h2>
             <Button onClick={onSubmitClik}>Вернуться на главную</Button>
           </div>
 )};
